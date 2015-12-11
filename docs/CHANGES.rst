@@ -44,6 +44,8 @@ Note: This release requires you to to update your Solr config and do a full rein
   This allows to get results on searches while reindexing is taking place.
   [gforcada]
 
+- Index comments.
+  [gforcada]
 
 4.1.0 (2015-02-19)
 ------------------
