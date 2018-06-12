@@ -4,6 +4,7 @@ from re import compile, UNICODE
 from Acquisition import aq_base
 from unidecode import unidecode
 from zope.component import queryUtility
+from zope.component.hooks import getSite
 
 from collective.solr.interfaces import ISolrConnectionConfig
 
@@ -63,6 +64,9 @@ def prepareData(data):
     path = data.get('path')
     if isinstance(path, dict) and not path.get('query'):
         data.pop('path')
+    if not path in data:
+        site = getSite()
+        data['path'] = site.absolute_url(1)
 
 
 simpleTerm = compile(r'^[\w\d]+$', UNICODE)
